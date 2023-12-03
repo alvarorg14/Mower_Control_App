@@ -50,11 +50,13 @@ class _AuthScreenState extends ConsumerState<AuthScreen> {
 
     var auth = Auth(
       token: resData['token'],
-      employeeId: resData['id'],
+      employeeId: resData['employeeId'],
+      companyId: resData['companyId'],
     );
 
     await storage.write(key: 'token', value: auth.token);
     await storage.write(key: 'employeeId', value: auth.employeeId);
+    await storage.write(key: 'companyId', value: auth.companyId);
 
     ref.read(authProvider.notifier).setAuth(auth);
   }

@@ -3,8 +3,8 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_secure_storage/flutter_secure_storage.dart';
 import 'package:mower_control_app/providers/auth_provider.dart';
 import 'package:mower_control_app/screens/auth.dart';
-import 'package:mower_control_app/screens/mowers.dart';
 import 'package:mower_control_app/models/auth.dart';
+import 'package:mower_control_app/screens/tabs.dart';
 
 const storage = FlutterSecureStorage();
 
@@ -13,13 +13,15 @@ class HomeScreen extends ConsumerWidget {
 
   void getAuthFromLocal(WidgetRef ref) async {
     String? token = await storage.read(key: 'token');
-    String? employeedId = await storage.read(key: 'employeeId');
+    String? employeeId = await storage.read(key: 'employeeId');
+    String? companyId = await storage.read(key: 'companyId');
 
-    if (token != null && employeedId != null) {
+    if (token != null && employeeId != null && companyId != null) {
       ref.read(authProvider.notifier).setAuth(
             Auth(
               token: token,
-              employeeId: employeedId,
+              employeeId: employeeId,
+              companyId: companyId,
             ),
           );
     }
@@ -35,6 +37,6 @@ class HomeScreen extends ConsumerWidget {
       return const AuthScreen();
     }
 
-    return const MowersScreen();
+    return const TabsScreen();
   }
 }
