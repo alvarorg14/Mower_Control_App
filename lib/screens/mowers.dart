@@ -3,6 +3,7 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:mower_control_app/api/mowers.dart';
 import 'package:mower_control_app/models/mower.dart';
 import 'package:mower_control_app/providers/auth_provider.dart';
+import 'package:mower_control_app/widgets/mower_card.dart';
 
 const mowersApi = MowersApi();
 
@@ -24,8 +25,6 @@ class _MowersScreenState extends ConsumerState<MowersScreen> {
 
   @override
   Widget build(BuildContext context) {
-    List<Mower> _mowers;
-
     return FutureBuilder(
       future: _futureMowers,
       builder: (context, snapshot) {
@@ -34,7 +33,6 @@ class _MowersScreenState extends ConsumerState<MowersScreen> {
         }
 
         if (snapshot.hasError) {
-          print(snapshot.error);
           return const Center(child: Text('Something went wrong!'));
         }
 
@@ -42,19 +40,16 @@ class _MowersScreenState extends ConsumerState<MowersScreen> {
           return const Center(child: Text('No mowers found!'));
         }
 
-        print(snapshot.data!.length);
-
         return ListView.builder(
           itemCount: snapshot.data!.length,
           itemBuilder: (ctx, index) {
             Mower mower = snapshot.data![index];
-            return Card(
-              child: Text(
-                mower.name,
-                style: Theme.of(context).textTheme.bodyMedium!.copyWith(
-                      color: Theme.of(context).colorScheme.onBackground,
-                    ),
+            return Padding(
+              padding: const EdgeInsets.symmetric(
+                vertical: 4,
+                horizontal: 8,
               ),
+              child: MowerCard(mower: mower),
             );
           },
         );

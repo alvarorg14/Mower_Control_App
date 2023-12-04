@@ -8,7 +8,7 @@ class MowersApi {
   const MowersApi();
 
   Future<List<Mower>> fecthMowersForCompany(Auth auth) async {
-    final url = Uri.http('10.0.2.2:8080', '/robots/company/${auth.companyId}');
+    final url = Uri.http('localhost:8080', '/robots/company/${auth.companyId}');
 
     final response = await http.get(url, headers: {
       'Content-Type': 'application/json',

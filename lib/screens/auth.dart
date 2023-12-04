@@ -34,7 +34,7 @@ class _AuthScreenState extends ConsumerState<AuthScreen> {
 
     _form.currentState!.save();
 
-    final url = Uri.http('10.0.2.2:8080', '/login');
+    final url = Uri.http('localhost:8080', '/login');
     final response = await http.post(
       url,
       headers: {
@@ -94,6 +94,9 @@ class _AuthScreenState extends ConsumerState<AuthScreen> {
                             decoration: const InputDecoration(
                               labelText: 'Username',
                             ),
+                            style: TextStyle(
+                              color: Theme.of(context).colorScheme.onBackground,
+                            ),
                             autocorrect: false,
                             textCapitalization: TextCapitalization.none,
                             validator: (value) {
@@ -109,6 +112,9 @@ class _AuthScreenState extends ConsumerState<AuthScreen> {
                           TextFormField(
                             decoration: const InputDecoration(
                               labelText: 'Password',
+                            ),
+                            style: TextStyle(
+                              color: Theme.of(context).colorScheme.onBackground,
                             ),
                             obscureText: true,
                             validator: (value) {
