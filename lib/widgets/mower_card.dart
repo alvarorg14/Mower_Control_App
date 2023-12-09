@@ -11,14 +11,19 @@ class MowerCard extends StatelessWidget {
   Widget build(BuildContext context) {
     return Card(
       elevation: 5,
-      child: Stack(
-        alignment: Alignment.center,
-        children: [
-          Positioned(
-            left: 10,
-            child: 
-          ),
-        ],
+      child: Padding(
+        padding: const EdgeInsets.all(8),
+        child: Stack(
+          children: [
+            MowerStatus(
+              mower: mower,
+            ),
+            Positioned(
+              left: 200,
+              child: Text('${mower.name}'),
+            ),
+          ],
+        ),
       ),
     );
   }
