@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:mower_control_app/screens/clients.dart';
 import 'package:mower_control_app/screens/mowers.dart';
 import 'package:mower_control_app/screens/parts.dart';
+import 'package:mower_control_app/widgets/new_client.dart';
 
 class TabsScreen extends ConsumerStatefulWidget {
   const TabsScreen({super.key});
@@ -19,12 +21,26 @@ class _TabsScreenState extends ConsumerState<TabsScreen> {
     });
   }
 
+  void _openAddClientWidget() {
+    Navigator.of(context).push(MaterialPageRoute(builder: (ctx) => const NewClient()));
+  }
+
   @override
   Widget build(BuildContext context) {
     Widget activePage = const MowersScreen();
-    var activePageTitle = 'Your Mowers';
+    var activePageTitle = 'Mowers';
+    List<Widget> activeActions = [];
 
     if (_selectedPageIndex == 1) {
+      activePage = const ClientsScreen();
+      activePageTitle = 'Clients';
+      activeActions = [
+        IconButton(
+          icon: const Icon(Icons.add),
+          onPressed: _openAddClientWidget,
+        ),
+      ];
+    } else if (_selectedPageIndex == 2) {
       activePage = const PartsScreen();
       activePageTitle = 'Repair Parts';
     }
@@ -32,6 +48,7 @@ class _TabsScreenState extends ConsumerState<TabsScreen> {
     return Scaffold(
       appBar: AppBar(
         title: Text(activePageTitle),
+        actions: activeActions,
       ),
       body: activePage,
       bottomNavigationBar: BottomNavigationBar(
@@ -43,6 +60,10 @@ class _TabsScreenState extends ConsumerState<TabsScreen> {
           BottomNavigationBarItem(
             icon: Icon(Icons.home),
             label: 'Mowers',
+          ),
+          BottomNavigationBarItem(
+            icon: Icon(Icons.person),
+            label: 'Clients',
           ),
           BottomNavigationBarItem(
             icon: Icon(Icons.settings),
