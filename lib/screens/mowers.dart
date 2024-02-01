@@ -3,7 +3,6 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:mower_control_app/api/mowers.dart';
 import 'package:mower_control_app/models/mower.dart';
 import 'package:mower_control_app/providers/auth_provider.dart';
-import 'package:mower_control_app/widgets/mower_card.dart';
 import 'package:mower_control_app/widgets/mower_test.dart';
 
 const mowersApi = MowersApi();
