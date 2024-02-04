@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:mower_control_app/screens/assign.dart';
 import 'package:mower_control_app/screens/clients.dart';
 import 'package:mower_control_app/screens/mowers.dart';
 import 'package:mower_control_app/screens/employees.dart';
@@ -30,11 +31,20 @@ class _TabsScreenState extends ConsumerState<TabsScreen> {
     Navigator.of(context).push(MaterialPageRoute(builder: (ctx) => const NewEmployee()));
   }
 
+  void _openAssignMowerScreen() {
+    Navigator.of(context).push(MaterialPageRoute(builder: (ctx) => const AssignScreen()));
+  }
+
   @override
   Widget build(BuildContext context) {
     Widget activePage = const MowersScreen();
     var activePageTitle = 'Mowers';
-    List<Widget> activeActions = [];
+    List<Widget> activeActions = [
+      IconButton(
+        icon: const Icon(Icons.add),
+        onPressed: _openAssignMowerScreen,
+      ),
+    ];
 
     if (_selectedPageIndex == 1) {
       activePage = const ClientsScreen();
