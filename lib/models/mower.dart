@@ -1,3 +1,7 @@
+import 'package:mower_control_app/models/client.dart';
+import 'package:mower_control_app/models/employee.dart';
+import 'package:mower_control_app/models/model.dart';
+
 class Mower {
   final String id;
   final int serialNumber;
@@ -9,9 +13,9 @@ class Mower {
   final int errorCode;
   final int errorCodeTimestamp;
   final bool assigned;
-  final String modelId;
-  final String? clientId;
-  final String? employeeId;
+  final Model model;
+  final Client? client;
+  final Employee? employee;
   final String companyId;
 
   Mower({
@@ -25,9 +29,9 @@ class Mower {
     required this.errorCode,
     required this.errorCodeTimestamp,
     required this.assigned,
-    required this.modelId,
-    required this.clientId,
-    required this.employeeId,
+    required this.model,
+    required this.client,
+    required this.employee,
     required this.companyId,
   });
 
@@ -43,9 +47,9 @@ class Mower {
       errorCode: json['errorCode'],
       errorCodeTimestamp: json['errorCodeTimestamp'],
       assigned: json['assigned'] == 1,
-      modelId: json['modelId'],
-      clientId: json['clientId'],
-      employeeId: json['employeeId'],
+      model: Model.fromJson(json['model']),
+      client: json['client'] != null ? Client.fromJson(json['client']) : null,
+      employee: json['employee'] != null ? Employee.fromJson(json['employee']) : null,
       companyId: json['companyId'],
     );
   }

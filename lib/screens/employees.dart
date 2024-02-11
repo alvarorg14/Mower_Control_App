@@ -32,10 +32,13 @@ class _EmployeesScreenState extends ConsumerState<EmployeesScreen> {
   @override
   Widget build(BuildContext context) {
     employees = ref.watch(employeesProvider);
+    //Don't show the current user in the list of employees
+    List<Employee> employeesToShow =
+        employees.where((employee) => employee.id != ref.read(authProvider).employeeId).toList();
     return ListView.builder(
-      itemCount: employees.length,
+      itemCount: employeesToShow.length,
       itemBuilder: (ctx, index) {
-        Employee employee = employees[index];
+        Employee employee = employeesToShow[index];
         return Padding(
           padding: const EdgeInsets.symmetric(
             vertical: 4,
