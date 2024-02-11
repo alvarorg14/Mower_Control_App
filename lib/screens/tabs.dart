@@ -3,8 +3,10 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:mower_control_app/screens/clients.dart';
 import 'package:mower_control_app/screens/mowers.dart';
 import 'package:mower_control_app/screens/employees.dart';
-import 'package:mower_control_app/widgets/new_client.dart';
-import 'package:mower_control_app/widgets/new_employee.dart';
+import 'package:mower_control_app/screens/unassigned_mowers.dart';
+import 'package:mower_control_app/widgets/add_mower_action.dart';
+import 'package:mower_control_app/screens/new_client.dart';
+import 'package:mower_control_app/screens/new_employee.dart';
 
 class TabsScreen extends ConsumerStatefulWidget {
   const TabsScreen({super.key});
@@ -30,11 +32,17 @@ class _TabsScreenState extends ConsumerState<TabsScreen> {
     Navigator.of(context).push(MaterialPageRoute(builder: (ctx) => const NewEmployee()));
   }
 
+  void _openUnassginedMowersScreen() {
+    Navigator.of(context).push(MaterialPageRoute(builder: (ctx) => const UnassignedMowersScreen()));
+  }
+
   @override
   Widget build(BuildContext context) {
     Widget activePage = const MowersScreen();
     var activePageTitle = 'Mowers';
-    List<Widget> activeActions = [];
+    List<Widget> activeActions = [
+      const AddMowerAction(),
+    ];
 
     if (_selectedPageIndex == 1) {
       activePage = const ClientsScreen();

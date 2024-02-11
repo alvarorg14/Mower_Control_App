@@ -1,5 +1,6 @@
 import 'dart:convert';
 
+import 'package:flutter_dotenv/flutter_dotenv.dart';
 import 'package:mower_control_app/models/employee.dart';
 import 'package:http/http.dart' as http;
 import 'package:mower_control_app/models/auth.dart';
@@ -8,7 +9,7 @@ class EmployeesApi {
   const EmployeesApi();
 
   Future<List<Employee>> fetchEmployeesForCompany(Auth auth) async {
-    final url = Uri.http('10.0.2.2:8080', '/employees/company/${auth.companyId}');
+    final url = Uri.http(dotenv.env['MOWER_CONTROL_API_URL']!, '/employees/company/${auth.companyId}');
 
     final response = await http.get(url, headers: {
       'Content-Type': 'application/json',
@@ -24,7 +25,7 @@ class EmployeesApi {
   }
 
   Future<Employee> createEmployee(Auth auth, String name, String surname1, String? surname2) async {
-    final url = Uri.http('10.0.2.2:8080', '/employees/${auth.companyId}');
+    final url = Uri.http(dotenv.env['MOWER_CONTROL_API_URL']!, '/employees/${auth.companyId}');
 
     Map<String, dynamic> bodyMap = {
       'name': name,
@@ -48,6 +49,19 @@ class EmployeesApi {
       return Employee.fromJson(json.decode(response.body));
     } else {
       throw Exception('Failed to create employee!');
+    }
+  }
+
+  Future<void> deleteEmployee(Auth auth, String employeeId) async {
+    final url = Uri.http(dotenv.env['MOWER_CONTROL_API_URL']!, '/employees/$employeeId');
+
+    final response = await http.delete(url, headers: {
+      'Content-Type': 'application/json',
+      'Authorization': auth.token,
+    });
+
+    if (response.statusCode != 204) {
+      throw Exception('Failed to delete employee!');
     }
   }
 }
