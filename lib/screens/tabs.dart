@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:mower_control_app/screens/clients.dart';
+import 'package:mower_control_app/screens/incidences.dart';
 import 'package:mower_control_app/screens/mowers.dart';
 import 'package:mower_control_app/screens/employees.dart';
 import 'package:mower_control_app/screens/unassigned_mowers.dart';
@@ -62,6 +63,10 @@ class _TabsScreenState extends ConsumerState<TabsScreen> {
           onPressed: _openAddEmployeeWidget,
         ),
       ];
+    } else if (_selectedPageIndex == 3) {
+      activePage = const IncidencesScreen();
+      activePageTitle = 'Incidences';
+      activeActions = [];
     }
 
     return Scaffold(
@@ -87,6 +92,10 @@ class _TabsScreenState extends ConsumerState<TabsScreen> {
           BottomNavigationBarItem(
             icon: Icon(Icons.engineering),
             label: 'Employees',
+          ),
+          BottomNavigationBarItem(
+            icon: Icon(Icons.warning_rounded),
+            label: 'Incidences',
           ),
         ],
       ),
