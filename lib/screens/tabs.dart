@@ -4,6 +4,7 @@ import 'package:mower_control_app/screens/clients.dart';
 import 'package:mower_control_app/screens/incidences.dart';
 import 'package:mower_control_app/screens/mowers.dart';
 import 'package:mower_control_app/screens/employees.dart';
+import 'package:mower_control_app/screens/profile.dart';
 import 'package:mower_control_app/screens/unassigned_mowers.dart';
 import 'package:mower_control_app/widgets/add_mower_action.dart';
 import 'package:mower_control_app/screens/new_client.dart';
@@ -67,6 +68,10 @@ class _TabsScreenState extends ConsumerState<TabsScreen> {
       activePage = const IncidencesScreen();
       activePageTitle = 'Incidences';
       activeActions = [];
+    } else if (_selectedPageIndex == 4) {
+      activePage = const ProfileScreen();
+      activePageTitle = 'Profile';
+      activeActions = [];
     }
 
     return Scaffold(
@@ -96,6 +101,10 @@ class _TabsScreenState extends ConsumerState<TabsScreen> {
           BottomNavigationBarItem(
             icon: Icon(Icons.warning_rounded),
             label: 'Incidences',
+          ),
+          BottomNavigationBarItem(
+            icon: Icon(Icons.settings),
+            label: 'Profile',
           ),
         ],
       ),

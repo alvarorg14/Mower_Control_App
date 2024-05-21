@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "742031617711",
+    "project_id": "mower-control",
+    "storage_bucket": "mower-control.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:742031617711:android:8ca5b3273bbd7b6911ae5a",
+        "android_client_info": {
+          "package_name": "com.example.mower_control_app"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBAkHEy0qhCbKu6jh4amPWF9Mre9jyubfY"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

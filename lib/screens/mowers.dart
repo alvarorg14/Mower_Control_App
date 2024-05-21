@@ -17,6 +17,7 @@ class MowersScreen extends ConsumerStatefulWidget {
 
 class _MowersScreenState extends ConsumerState<MowersScreen> {
   List<Mower> mowers = [];
+  String searchText = '';
 
   @override
   void initState() {
@@ -31,20 +32,47 @@ class _MowersScreenState extends ConsumerState<MowersScreen> {
 
   @override
   Widget build(BuildContext context) {
-    mowers = ref.watch(mowersProvider);
+    List<Mower> filteredMowers = ref.watch(mowersProvider).where((mower) {
+      return mower.name.toLowerCase().contains(searchText.toLowerCase()) ||
+          mower.client!.name.toLowerCase().contains(searchText.toLowerCase()) ||
+          mower.serialNumber.toString().contains(searchText);
+    }).toList();
 
-    return ListView.builder(
-      itemCount: mowers.length,
-      itemBuilder: (ctx, index) {
-        Mower mower = mowers[index];
-        return Padding(
-          padding: const EdgeInsets.symmetric(
-            vertical: 4,
-            horizontal: 8,
+    return Column(
+      children: [
+        Padding(
+          padding: const EdgeInsets.all(8.0),
+          child: TextField(
+            onChanged: (value) {
+              setState(() {
+                searchText = value;
+              });
+            },
+            decoration: InputDecoration(
+              labelText: 'Search',
+              suffixIcon: const Icon(Icons.search),
+              border: OutlineInputBorder(
+                borderRadius: BorderRadius.circular(10.0),
+              ),
+            ),
+            style: Theme.of(context).textTheme.bodyLarge!.copyWith(
+                  color: Theme.of(context).colorScheme.onBackground,
+                ),
           ),
-          child: MowerCard(mower: mower),
-        );
-      },
+        ),
+        Expanded(
+          child: ListView.builder(
+            itemCount: filteredMowers.length,
+            itemBuilder: (ctx, index) {
+              Mower mower = filteredMowers[index];
+              return Padding(
+                padding: const EdgeInsets.symmetric(vertical: 4, horizontal: 8),
+                child: MowerCard(mower: mower),
+              );
+            },
+          ),
+        ),
+      ],
     );
   }
 }

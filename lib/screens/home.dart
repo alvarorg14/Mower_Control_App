@@ -5,6 +5,7 @@ import 'package:mower_control_app/providers/auth_provider.dart';
 import 'package:mower_control_app/screens/auth.dart';
 import 'package:mower_control_app/models/auth.dart';
 import 'package:mower_control_app/screens/tabs.dart';
+import 'package:mower_control_app/utils/notifications.dart';
 
 const storage = FlutterSecureStorage();
 
@@ -27,6 +28,15 @@ class HomeScreen extends ConsumerWidget {
     }
   }
 
+  void showNotificationModal(String employeeId) async {
+    String? deviceId = await storage.read(key: 'deviceId');
+
+    if (deviceId == null) {
+      requestPermission();
+      getToken(employeeId);
+    }
+  }
+
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     getAuthFromLocal(ref);
@@ -36,6 +46,8 @@ class HomeScreen extends ConsumerWidget {
     if (auth.token.isEmpty) {
       return const AuthScreen();
     }
+
+    showNotificationModal(auth.employeeId);
 
     return const TabsScreen();
   }

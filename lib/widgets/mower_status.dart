@@ -22,7 +22,7 @@ class MowerStatus extends StatelessWidget {
             ),
           ),
           child: ClipOval(
-            child: Image.asset('assets/images/405X.png'),
+            child: Image.asset('assets/images/${mower.model.name}.png'),
           ),
         ),
         const SizedBox(

@@ -12,6 +12,24 @@ const storage = FlutterSecureStorage();
 class AuthApi {
   const AuthApi();
 
+  Future<void> addDevice(String userId, String deviceId) async {
+    final url = Uri.http(dotenv.env['MOWER_CONTROL_API_URL']!, '/device');
+    final response = await http.post(
+      url,
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: json.encode({
+        'employeeId': userId,
+        'deviceId': deviceId,
+      }),
+    );
+
+    if (response.statusCode != 200) {
+      throw Error();
+    }
+  }
+
   void login(WidgetRef ref, String username, String password) async {
     final url = Uri.http(dotenv.env['MOWER_CONTROL_API_URL']!, '/login');
     final response = await http.post(

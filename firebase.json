@@ -1,0 +1,27 @@
+{
+  "flutter": {
+    "platforms": {
+      "android": {
+        "default": {
+          "projectId": "mower-control",
+          "appId": "1:742031617711:android:8ca5b3273bbd7b6911ae5a",
+          "fileOutput": "android/app/google-services.json"
+        }
+      },
+      "ios": {
+        "default": {
+          "projectId": "mower-control",
+          "appId": "1:742031617711:ios:0c67abf1dd19bd7b11ae5a",
+          "uploadDebugSymbols": false,
+          "fileOutput": "ios/Runner/GoogleService-Info.plist"
+        }
+      },
+      "dart": {
+        "lib/firebase_options.dart": {
+          "projectId": "mower-control",
+          "configurations": { "android": "1:742031617711:android:8ca5b3273bbd7b6911ae5a", "ios": "1:742031617711:ios:0c67abf1dd19bd7b11ae5a" }
+        }
+      }
+    }
+  }
+}
