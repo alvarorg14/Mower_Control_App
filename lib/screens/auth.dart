@@ -179,76 +179,74 @@ class _AuthScreenState extends ConsumerState<AuthScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: Colors.white.withOpacity(0.85),
-      body: SingleChildScrollView(
-        child: Stack(
-          children: [
-            Center(
-              child: Column(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: [
-                  Container(
-                    margin: const EdgeInsets.only(
-                      top: 30,
-                      bottom: 40,
-                      left: 20,
-                      right: 20,
-                    ),
-                    width: 250,
-                    child: Image.asset('assets/images/logo.png'), // Updated line
+      body: Stack(
+        children: [
+          Center(
+            child: Column(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                Container(
+                  margin: const EdgeInsets.only(
+                    top: 30,
+                    bottom: 40,
+                    left: 20,
+                    right: 20,
                   ),
-                  Card(
-                    margin: const EdgeInsets.all(20),
-                    child: Padding(
-                      padding: const EdgeInsets.all(16),
-                      child: Form(
-                        key: _form,
-                        child: Column(
-                          mainAxisSize: MainAxisSize.min,
-                          children: [
-                            ..._isLogin
-                                ? loginInputs.getLoginInputs(context, _setUsername, _setPassword)
-                                : signupInputs.getSignupInputs(context, _setCompanyName, _setCif, _setName,
-                                    _setSurname1, _setSurname2, _setUsername, _setPassword),
-                            const SizedBox(
-                              height: 12,
+                  width: 250,
+                  child: Image.asset('assets/images/logo.png'), // Updated line
+                ),
+                Card(
+                  margin: const EdgeInsets.all(20),
+                  child: Padding(
+                    padding: const EdgeInsets.all(16),
+                    child: Form(
+                      key: _form,
+                      child: Column(
+                        mainAxisSize: MainAxisSize.min,
+                        children: [
+                          ..._isLogin
+                              ? loginInputs.getLoginInputs(context, _setUsername, _setPassword)
+                              : signupInputs.getSignupInputs(context, _setCompanyName, _setCif, _setName, _setSurname1,
+                                  _setSurname2, _setUsername, _setPassword),
+                          const SizedBox(
+                            height: 12,
+                          ),
+                          ElevatedButton(
+                            onPressed: _submit,
+                            style: ElevatedButton.styleFrom(
+                              backgroundColor: Theme.of(context).colorScheme.primaryContainer,
                             ),
-                            ElevatedButton(
-                              onPressed: _submit,
-                              style: ElevatedButton.styleFrom(
-                                backgroundColor: Theme.of(context).colorScheme.primaryContainer,
-                              ),
-                              child: Text(_isLogin ? 'Login' : 'Signup'),
+                            child: Text(_isLogin ? 'Login' : 'Signup'),
+                          ),
+                          TextButton(
+                            onPressed: () {
+                              setState(() {
+                                _isLogin = !_isLogin;
+                              });
+                            },
+                            child: Text(
+                              _isLogin ? 'Create an account' : 'I already have an account',
                             ),
-                            TextButton(
-                              onPressed: () {
-                                setState(() {
-                                  _isLogin = !_isLogin;
-                                });
-                              },
-                              child: Text(
-                                _isLogin ? 'Create an account' : 'I already have an account',
-                              ),
-                            ),
-                          ],
-                        ),
+                          ),
+                        ],
                       ),
                     ),
                   ),
-                ],
-              ),
+                ),
+              ],
             ),
-            if (_isLoading)
-              Container(
-                color: Colors.black.withOpacity(0.5),
-                child: BackdropFilter(
-                  filter: ImageFilter.blur(sigmaX: 5, sigmaY: 5),
-                  child: const Center(
-                    child: CircularProgressIndicator(),
-                  ),
+          ),
+          if (_isLoading)
+            Container(
+              color: Colors.black.withOpacity(0.5),
+              child: BackdropFilter(
+                filter: ImageFilter.blur(sigmaX: 5, sigmaY: 5),
+                child: const Center(
+                  child: CircularProgressIndicator(),
                 ),
               ),
-          ],
-        ),
+            ),
+        ],
       ),
     );
   }
