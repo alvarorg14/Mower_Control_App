@@ -1,5 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:mower_control_app/models/mower.dart';
+import 'package:mower_control_app/utils/status.dart';
+
+const statusUtils = StatusUtils();
 
 class MowerStatus extends StatelessWidget {
   const MowerStatus({super.key, required this.mower});
@@ -17,7 +20,7 @@ class MowerStatus extends StatelessWidget {
           decoration: BoxDecoration(
             shape: BoxShape.circle,
             border: Border.all(
-              color: Colors.yellow,
+              color: statusUtils.getColorForStatus(mower.activity),
               width: 3.0,
             ),
           ),
@@ -29,7 +32,7 @@ class MowerStatus extends StatelessWidget {
           height: 16,
         ),
         Text(
-          mower.activity,
+          statusUtils.getTextForStatus(mower.activity).toUpperCase(),
           style: Theme.of(context).textTheme.bodyMedium!.copyWith(
                 color: Theme.of(context).colorScheme.onBackground,
               ),

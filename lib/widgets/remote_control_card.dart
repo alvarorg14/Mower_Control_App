@@ -1,6 +1,12 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:mower_control_app/api/remote_control.dart';
+import 'package:mower_control_app/models/auth.dart';
+import 'package:mower_control_app/providers/auth_provider.dart';
 
-class RemoteControl extends StatelessWidget {
+const remoteControlApi = RemoteControlApi();
+
+class RemoteControl extends ConsumerWidget {
   const RemoteControl({
     super.key,
     required this.mowerId,
@@ -8,8 +14,20 @@ class RemoteControl extends StatelessWidget {
 
   final String mowerId;
 
+  void sendMowAction(Auth auth) async {
+    await remoteControlApi.sendMowAction(auth, mowerId);
+  }
+
+  void sendChargeAction(Auth auth) async {
+    await remoteControlApi.sendChargeAction(auth, mowerId);
+  }
+
+  void sendPauseAction(Auth auth) async {
+    await remoteControlApi.sendPauseAction(auth, mowerId);
+  }
+
   @override
-  Widget build(BuildContext context) {
+  Widget build(BuildContext context, WidgetRef ref) {
     Color buttonsBackgroundColor = Theme.of(context).colorScheme.secondary;
     Color buttonsTextColor = Theme.of(context).colorScheme.onSecondary;
     return Card(
@@ -44,7 +62,7 @@ class RemoteControl extends StatelessWidget {
                         ),
                   ),
                   onPressed: () {
-                    // Add your stop action here
+                    sendChargeAction(ref.read(authProvider));
                   },
                   style: ElevatedButton.styleFrom(
                     backgroundColor: buttonsBackgroundColor, // Background color
@@ -63,7 +81,7 @@ class RemoteControl extends StatelessWidget {
                         ),
                   ),
                   onPressed: () {
-                    // Add your pause action here
+                    sendPauseAction(ref.read(authProvider));
                   },
                   style: ElevatedButton.styleFrom(
                     backgroundColor: buttonsBackgroundColor, // Background color
@@ -82,7 +100,7 @@ class RemoteControl extends StatelessWidget {
                         ),
                   ),
                   onPressed: () {
-                    // Add your resume action here
+                    sendMowAction(ref.read(authProvider));
                   },
                   style: ElevatedButton.styleFrom(
                     backgroundColor: buttonsBackgroundColor, // Background color

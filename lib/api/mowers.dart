@@ -85,4 +85,19 @@ class MowersApi {
       throw Exception('Failed to load mowers');
     }
   }
+
+  Future<void> updateRobotsForCompany(Auth auth) async {
+    final url = Uri.http(dotenv.env['MOWER_CONTROL_API_URL']!, '/robots/company/${auth.companyId}/refresh');
+    final response = await http.post(
+      url,
+      headers: {
+        'Content-Type': 'application/json',
+        'Authorization': auth.token,
+      },
+    );
+
+    if (response.statusCode != 200) {
+      throw Exception('Failed to load mowers');
+    }
+  }
 }
