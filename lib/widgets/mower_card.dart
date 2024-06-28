@@ -51,6 +51,9 @@ class MowerCard extends StatelessWidget {
                             style: Theme.of(context).textTheme.bodyLarge!.copyWith(
                                   color: Theme.of(context).colorScheme.primary,
                                 ),
+                            maxLines: 2,
+                            overflow: TextOverflow.ellipsis,
+                            textAlign: TextAlign.center,
                           ),
                           Text(
                             mower.name,
@@ -65,7 +68,7 @@ class MowerCard extends StatelessWidget {
                       alignment: Alignment.bottomRight,
                       child: Text(
                         '${mower.model.name} - ${mower.serialNumber}',
-                        style: Theme.of(context).textTheme.bodyMedium!.copyWith(
+                        style: Theme.of(context).textTheme.bodySmall!.copyWith(
                               color: Theme.of(context).colorScheme.onBackground,
                             ),
                       ),

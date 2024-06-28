@@ -15,8 +15,8 @@ class MowerStatus extends StatelessWidget {
       mainAxisAlignment: MainAxisAlignment.center,
       children: [
         Container(
-          width: 100,
-          height: 100,
+          width: 90,
+          height: 90,
           decoration: BoxDecoration(
             shape: BoxShape.circle,
             border: Border.all(
@@ -32,7 +32,7 @@ class MowerStatus extends StatelessWidget {
           height: 16,
         ),
         Text(
-          statusUtils.getTextForStatus(mower.activity).toUpperCase(),
+          statusUtils.getTextForActivity(mower.activity).toUpperCase(),
           style: Theme.of(context).textTheme.bodyMedium!.copyWith(
                 color: Theme.of(context).colorScheme.onBackground,
               ),

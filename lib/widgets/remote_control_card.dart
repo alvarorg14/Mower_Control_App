@@ -46,46 +46,53 @@ class RemoteControl extends ConsumerWidget {
             const SizedBox(
               height: 16,
             ),
-            Row(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            Column(
               children: [
-                ElevatedButton.icon(
-                  icon: Icon(
-                    Icons.stop,
-                    color: buttonsTextColor,
-                  ),
-                  label: Text(
-                    "Aparcar",
-                    style: Theme.of(context).textTheme.bodyMedium!.copyWith(
-                          color: buttonsTextColor,
-                          fontWeight: FontWeight.bold,
-                        ),
-                  ),
-                  onPressed: () {
-                    sendChargeAction(ref.read(authProvider));
-                  },
-                  style: ElevatedButton.styleFrom(
-                    backgroundColor: buttonsBackgroundColor, // Background color
-                  ),
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                  children: [
+                    ElevatedButton.icon(
+                      icon: Icon(
+                        Icons.stop,
+                        color: buttonsTextColor,
+                      ),
+                      label: Text(
+                        "Aparcar",
+                        style: Theme.of(context).textTheme.bodyMedium!.copyWith(
+                              color: buttonsTextColor,
+                              fontWeight: FontWeight.bold,
+                            ),
+                      ),
+                      onPressed: () {
+                        sendChargeAction(ref.read(authProvider));
+                      },
+                      style: ElevatedButton.styleFrom(
+                        backgroundColor: buttonsBackgroundColor, // Background color
+                      ),
+                    ),
+                    ElevatedButton.icon(
+                      icon: Icon(
+                        Icons.pause,
+                        color: buttonsTextColor,
+                      ),
+                      label: Text(
+                        "Pausar",
+                        style: Theme.of(context).textTheme.bodyMedium!.copyWith(
+                              color: buttonsTextColor,
+                              fontWeight: FontWeight.bold,
+                            ),
+                      ),
+                      onPressed: () {
+                        sendPauseAction(ref.read(authProvider));
+                      },
+                      style: ElevatedButton.styleFrom(
+                        backgroundColor: buttonsBackgroundColor, // Background color
+                      ),
+                    ),
+                  ],
                 ),
-                ElevatedButton.icon(
-                  icon: Icon(
-                    Icons.pause,
-                    color: buttonsTextColor,
-                  ),
-                  label: Text(
-                    "Pausar",
-                    style: Theme.of(context).textTheme.bodyMedium!.copyWith(
-                          color: buttonsTextColor,
-                          fontWeight: FontWeight.bold,
-                        ),
-                  ),
-                  onPressed: () {
-                    sendPauseAction(ref.read(authProvider));
-                  },
-                  style: ElevatedButton.styleFrom(
-                    backgroundColor: buttonsBackgroundColor, // Background color
-                  ),
+                const SizedBox(
+                  height: 12,
                 ),
                 ElevatedButton.icon(
                   icon: Icon(

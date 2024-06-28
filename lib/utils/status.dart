@@ -26,8 +26,8 @@ class StatusUtils {
     return Colors.red;
   }
 
-  String getTextForStatus(String status) {
-    switch (status) {
+  String getTextForActivity(String activity) {
+    switch (activity) {
       case 'UNKNOWN':
         return 'Desconocido';
       case 'NOT_APPLICABLE':
@@ -44,6 +44,54 @@ class StatusUtils {
         return 'Aparcado';
       case 'STOPPED_IN_GARDEN':
         return 'Parado';
+    }
+
+    return 'Desconocido';
+  }
+
+  String getTextForMode(String mode) {
+    switch (mode) {
+      case 'MAIN_AREA':
+        return 'Area principal';
+      case 'DEMO':
+        return 'Demo';
+      case 'SECONDARY_AREA':
+        return 'Area secundaria';
+      case 'Home':
+        return 'Base de carga';
+      case 'UNKNOWN':
+        return 'Desconocido';
+    }
+
+    return 'Desconocido';
+  }
+
+  String getTextForState(String state) {
+    switch (state) {
+      case 'UNKNOWN':
+        return 'Desconocido';
+      case 'NOT_APPLICABLE':
+        return 'Desconocido';
+      case 'PAUSED':
+        return 'Pausado';
+      case 'IN_OPERATION':
+        return 'En operación';
+      case 'WAIT_UPDATING':
+        return 'Actualizando';
+      case 'WAIT_POWER_UP':
+        return 'Encendiendo';
+      case 'RESTRICTED':
+        return 'Restringido';
+      case 'OFF':
+        return 'Apagado';
+      case 'STOPPED':
+        return 'Parado';
+      case 'ERROR':
+        return 'Error';
+      case 'FATAL_ERROR':
+        return 'Error';
+      case 'ERROR_AT_POWER_APP':
+        return 'Error';
     }
 
     return 'Desconocido';

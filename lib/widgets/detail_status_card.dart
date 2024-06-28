@@ -1,4 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:mower_control_app/utils/status.dart';
+
+const statusUtils = StatusUtils();
 
 class MowerDetailStatus extends StatelessWidget {
   const MowerDetailStatus({
@@ -36,12 +39,12 @@ class MowerDetailStatus extends StatelessWidget {
             mainAxisAlignment: MainAxisAlignment.spaceAround,
             children: [
               Container(
-                width: 100,
-                height: 100,
+                width: 90,
+                height: 90,
                 decoration: BoxDecoration(
                   shape: BoxShape.circle,
                   border: Border.all(
-                    color: Colors.yellow,
+                    color: statusUtils.getColorForStatus(activity),
                     width: 3.0,
                   ),
                 ),
@@ -62,7 +65,7 @@ class MowerDetailStatus extends StatelessWidget {
                     height: 8,
                   ),
                   Text(
-                    'Modo: $mode',
+                    'Modo: ${statusUtils.getTextForMode(mode)}',
                     style: Theme.of(context).textTheme.bodyMedium!.copyWith(
                           color: Theme.of(context).colorScheme.onBackground,
                         ),
@@ -71,7 +74,7 @@ class MowerDetailStatus extends StatelessWidget {
                     height: 8,
                   ),
                   Text(
-                    'Acitvidad: $activity',
+                    'Acitvidad: ${statusUtils.getTextForActivity(activity)}',
                     style: Theme.of(context).textTheme.bodyMedium!.copyWith(
                           color: Theme.of(context).colorScheme.onBackground,
                         ),
@@ -80,7 +83,7 @@ class MowerDetailStatus extends StatelessWidget {
                     height: 8,
                   ),
                   Text(
-                    'Estado: $state',
+                    'Estado: ${statusUtils.getTextForState(state)}',
                     style: Theme.of(context).textTheme.bodyMedium!.copyWith(
                           color: Theme.of(context).colorScheme.onBackground,
                         ),

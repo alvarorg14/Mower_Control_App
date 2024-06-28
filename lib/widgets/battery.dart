@@ -12,7 +12,7 @@ class Battery extends StatelessWidget {
       children: [
         Text(
           '${battery} %',
-          style: Theme.of(context).textTheme.bodyMedium!.copyWith(
+          style: Theme.of(context).textTheme.bodySmall!.copyWith(
                 color: Theme.of(context).colorScheme.onBackground,
               ),
         ),
@@ -22,6 +22,7 @@ class Battery extends StatelessWidget {
         Icon(
           Icons.battery_full,
           color: Theme.of(context).colorScheme.onBackground,
+          size: 20,
         ),
       ],
     );
