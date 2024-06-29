@@ -16,13 +16,15 @@ class HomeScreen extends ConsumerWidget {
     String? token = await storage.read(key: 'token');
     String? employeeId = await storage.read(key: 'employeeId');
     String? companyId = await storage.read(key: 'companyId');
+    String? role = await storage.read(key: 'role');
 
-    if (token != null && employeeId != null && companyId != null) {
+    if (token != null && employeeId != null && companyId != null && role != null) {
       ref.read(authProvider.notifier).setAuth(
             Auth(
               token: token,
               employeeId: employeeId,
               companyId: companyId,
+              role: role,
             ),
           );
     }

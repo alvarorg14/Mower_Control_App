@@ -49,11 +49,13 @@ class AuthApi {
       token: resData['token'],
       employeeId: resData['employeeId'],
       companyId: resData['companyId'],
+      role: resData['role'],
     );
 
     await storage.write(key: 'token', value: auth.token);
     await storage.write(key: 'employeeId', value: auth.employeeId);
     await storage.write(key: 'companyId', value: auth.companyId);
+    await storage.write(key: 'role', value: auth.role);
 
     ref.read(authProvider.notifier).setAuth(auth);
   }
@@ -99,11 +101,15 @@ class AuthApi {
       token: resData['token'],
       employeeId: resData['employeeId'],
       companyId: resData['companyId'],
+      role: resData['role'],
     );
+
+    print(auth.role);
 
     await storage.write(key: 'token', value: auth.token);
     await storage.write(key: 'employeeId', value: auth.employeeId);
     await storage.write(key: 'companyId', value: auth.companyId);
+    await storage.write(key: 'role', value: auth.role);
 
     ref.read(authProvider.notifier).setAuth(auth);
   }

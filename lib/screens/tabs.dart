@@ -47,7 +47,8 @@ class _TabsScreenState extends ConsumerState<TabsScreen> {
       _isLoading = true;
     });
     await mowersApi.updateRobotsForCompany(ref.read(authProvider));
-    List<Mower> mowers = await mowersApi.fecthMowersForCompany(ref.read(authProvider), true);
+    List<Mower> mowers =
+        await mowersApi.fecthMowersForEmployee(ref.read(authProvider), ref.read(authProvider).employeeId);
     ref.read(mowersProvider.notifier).setMowers(mowers);
     setState(() {
       _isLoading = false;
@@ -56,6 +57,9 @@ class _TabsScreenState extends ConsumerState<TabsScreen> {
 
   @override
   Widget build(BuildContext context) {
+    String role = ref.read(authProvider).role;
+    bool isAdmin = role == 'admin';
+
     Widget activePage = const MowersScreen();
     var activePageTitle = 'Mowers';
     List<Widget> activeActions = [
@@ -63,41 +67,74 @@ class _TabsScreenState extends ConsumerState<TabsScreen> {
         onPressed: updateRobots,
         icon: const Icon(Icons.autorenew),
       ),
-      const AddMowerAction(),
+      if (isAdmin) const AddMowerAction(),
     ];
 
-    if (_selectedPageIndex == 1) {
-      activePage = const ClientsScreen();
-      activePageTitle = 'Clients';
-      activeActions = [
-        IconButton(
-          icon: const Icon(Icons.add),
-          onPressed: _openAddClientWidget,
-        ),
-      ];
-    } else if (_selectedPageIndex == 2) {
-      activePage = const EmployeesScreen();
-      activePageTitle = 'Employees';
-      activeActions = [
-        IconButton(
-          icon: const Icon(Icons.add),
-          onPressed: _openAddEmployeeWidget,
-        ),
-      ];
-    } else if (_selectedPageIndex == 3) {
-      activePage = const IncidencesScreen();
-      activePageTitle = 'Incidences';
-      activeActions = [
-        IconButton(
-          onPressed: updateRobots,
-          icon: const Icon(Icons.autorenew),
-        ),
-      ];
-    } else if (_selectedPageIndex == 4) {
-      activePage = const ProfileScreen();
-      activePageTitle = 'Profile';
-      activeActions = [];
+    List<Map<String, dynamic>> pages = [
+      {
+        'title': 'Mowers',
+        'icon': Icons.home,
+        'page': const MowersScreen(),
+        'actions': [
+          IconButton(
+            onPressed: updateRobots,
+            icon: const Icon(Icons.autorenew),
+          ),
+          if (isAdmin) const AddMowerAction(),
+        ],
+      },
+      {
+        'title': 'Clients',
+        'icon': Icons.person,
+        'page': const ClientsScreen(),
+        'actions': [
+          IconButton(
+            icon: const Icon(Icons.add),
+            onPressed: _openAddClientWidget,
+          ),
+        ],
+      },
+      {
+        'title': 'Employees',
+        'icon': Icons.engineering,
+        'page': const EmployeesScreen(),
+        'actions': [
+          IconButton(
+            icon: const Icon(Icons.add),
+            onPressed: _openAddEmployeeWidget,
+          ),
+        ],
+      },
+      {
+        'title': 'Incidences',
+        'icon': Icons.warning_rounded,
+        'page': const IncidencesScreen(),
+        'actions': [
+          IconButton(
+            onPressed: updateRobots,
+            icon: const Icon(Icons.autorenew),
+          ),
+        ],
+      },
+      {
+        'title': 'Profile',
+        'icon': Icons.settings,
+        'page': const ProfileScreen(),
+        'actions': [],
+      },
+    ];
+
+    if (!isAdmin) {
+      pages.removeWhere((page) => page['title'] == 'Clients' || page['title'] == 'Employees');
     }
+
+    if (_selectedPageIndex >= pages.length) {
+      _selectedPageIndex = 0;
+    }
+
+    activePage = pages[_selectedPageIndex]['page'];
+    activePageTitle = pages[_selectedPageIndex]['title'];
+    activeActions = List<Widget>.from(pages[_selectedPageIndex]['actions']);
 
     return Scaffold(
       appBar: AppBar(
@@ -124,28 +161,12 @@ class _TabsScreenState extends ConsumerState<TabsScreen> {
         currentIndex: _selectedPageIndex,
         selectedItemColor: Theme.of(context).colorScheme.primary,
         unselectedItemColor: Theme.of(context).colorScheme.onBackground,
-        items: const [
-          BottomNavigationBarItem(
-            icon: Icon(Icons.home),
-            label: 'Mowers',
-          ),
-          BottomNavigationBarItem(
-            icon: Icon(Icons.person),
-            label: 'Clients',
-          ),
-          BottomNavigationBarItem(
-            icon: Icon(Icons.engineering),
-            label: 'Employees',
-          ),
-          BottomNavigationBarItem(
-            icon: Icon(Icons.warning_rounded),
-            label: 'Incidences',
-          ),
-          BottomNavigationBarItem(
-            icon: Icon(Icons.settings),
-            label: 'Profile',
-          ),
-        ],
+        items: pages
+            .map((page) => BottomNavigationBarItem(
+                  icon: Icon(page['icon']),
+                  label: page['title'],
+                ))
+            .toList(),
       ),
     );
   }

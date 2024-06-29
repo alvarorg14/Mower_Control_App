@@ -19,7 +19,7 @@ class _ProfileScreenState extends ConsumerState<ProfileScreen> {
   void _logOut() {
     storage.deleteAll();
     ref.read(authProvider.notifier).setAuth(
-          const Auth(companyId: '', token: '', employeeId: ''),
+          const Auth(companyId: '', token: '', employeeId: '', role: ''),
         );
   }
 

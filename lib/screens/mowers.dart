@@ -26,7 +26,8 @@ class _MowersScreenState extends ConsumerState<MowersScreen> {
   }
 
   void loadMowers() async {
-    List<Mower> mowers = await mowersApi.fecthMowersForCompany(ref.read(authProvider), true);
+    List<Mower> mowers =
+        await mowersApi.fecthMowersForEmployee(ref.read(authProvider), ref.read(authProvider).employeeId);
     ref.read(mowersProvider.notifier).setMowers(mowers);
   }
 

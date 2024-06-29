@@ -42,7 +42,7 @@ class _IncidencesScreenState extends ConsumerState<IncidencesScreen> {
   }
 
   void loadIncidences() async {
-    List<Incidence> incidences = await incidencesApi.fetchIncidencesForCompany(ref.read(authProvider), false);
+    List<Incidence> incidences = await incidencesApi.fetchIncidencesForEmployee(ref.read(authProvider), false);
     ref.read(incidencesProvider.notifier).setIncidences(incidences);
   }
 

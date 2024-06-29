@@ -8,9 +8,9 @@ import 'package:mower_control_app/models/incidence.dart';
 class IncidencesApi {
   const IncidencesApi();
 
-  Future<List<Incidence>> fetchIncidencesForCompany(Auth auth, bool readed) async {
+  Future<List<Incidence>> fetchIncidencesForEmployee(Auth auth, bool readed) async {
     final queryParams = {'readed': readed.toString()};
-    final url = Uri.http(dotenv.env['MOWER_CONTROL_API_URL']!, '/incidences/company/${auth.companyId}', queryParams);
+    final url = Uri.http(dotenv.env['MOWER_CONTROL_API_URL']!, '/incidences/employee/${auth.employeeId}', queryParams);
 
     final response = await http.get(url, headers: {
       'Content-Type': 'application/json',
