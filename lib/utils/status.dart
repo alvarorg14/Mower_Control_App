@@ -26,12 +26,12 @@ class StatusUtils {
     return Colors.red;
   }
 
-  String getTextForActivity(String activity, String state) {
+  String getTextForActivity(String activity) {
     switch (activity) {
       case 'UNKNOWN':
         return 'Desconocido';
       case 'NOT_APPLICABLE':
-        return getTextForState(state);
+        return 'No aplica';
       case 'MOWING':
         return 'Segando';
       case 'GOING_HOME':
@@ -92,6 +92,29 @@ class StatusUtils {
         return 'Error';
       case 'ERROR_AT_POWER_APP':
         return 'Error';
+    }
+
+    return 'Desconocido';
+  }
+
+  String getTextForActivityAndState(String activity, String state) {
+    switch (activity) {
+      case 'UNKNOWN':
+        return 'Desconocido';
+      case 'NOT_APPLICABLE':
+        return getTextForState(state);
+      case 'MOWING':
+        return 'Segando';
+      case 'GOING_HOME':
+        return 'Volviendo';
+      case 'CHARGING':
+        return 'Cargando';
+      case 'LEAVING':
+        return 'Arrancando';
+      case 'PARKED_IN_CS':
+        return 'Aparcado';
+      case 'STOPPED_IN_GARDEN':
+        return 'Parado';
     }
 
     return 'Desconocido';

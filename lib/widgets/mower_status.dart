@@ -32,7 +32,7 @@ class MowerStatus extends StatelessWidget {
           height: 16,
         ),
         Text(
-          statusUtils.getTextForActivity(mower.activity, mower.state).toUpperCase(),
+          statusUtils.getTextForActivityAndState(mower.activity, mower.state).toUpperCase(),
           style: Theme.of(context).textTheme.bodyMedium!.copyWith(
                 color: Theme.of(context).colorScheme.onBackground,
               ),

@@ -52,6 +52,12 @@ dev_dependencies:
     sdk: flutter
   mockito: ^5.0.0
   test: ^1.16.0
+  flutter_launcher_icons: ^0.9.2
+
+flutter_icons:
+  android: true
+  ios: true
+  image_path: "assets/images/icon.png"
 
   # The "flutter_lints" package below contains a set of recommended lints to
   # encourage good coding practices. The lint set provided by the package is
@@ -89,6 +95,7 @@ flutter:
     - assets/images/550.png
     - assets/images/Aspire™ R4.png
     - assets/images/logo.png
+    - assets/images/icon.png
     - .env
 
   # An image asset can refer to one or more resolution-specific "variants", see
