@@ -26,12 +26,12 @@ class StatusUtils {
     return Colors.red;
   }
 
-  String getTextForActivity(String activity) {
+  String getTextForActivity(String activity, String state) {
     switch (activity) {
       case 'UNKNOWN':
         return 'Desconocido';
       case 'NOT_APPLICABLE':
-        return 'Error';
+        return getTextForState(state);
       case 'MOWING':
         return 'Segando';
       case 'GOING_HOME':

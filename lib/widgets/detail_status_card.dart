@@ -74,7 +74,7 @@ class MowerDetailStatus extends StatelessWidget {
                     height: 8,
                   ),
                   Text(
-                    'Acitvidad: ${statusUtils.getTextForActivity(activity)}',
+                    'Acitvidad: ${statusUtils.getTextForActivity(activity, state)}',
                     style: Theme.of(context).textTheme.bodyMedium!.copyWith(
                           color: Theme.of(context).colorScheme.onBackground,
                         ),

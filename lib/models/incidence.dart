@@ -24,6 +24,7 @@ class Incidence {
       message: json['message'],
       date: DateTime.fromMillisecondsSinceEpoch(
         json['timestamp'],
+        isUtc: true,
       ),
       mower: Mower.fromJson(json['robot']),
       readed: json['readed'] == 1,
