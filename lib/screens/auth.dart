@@ -217,7 +217,7 @@ class _AuthScreenState extends ConsumerState<AuthScreen> {
                               style: ElevatedButton.styleFrom(
                                 backgroundColor: Theme.of(context).colorScheme.primaryContainer,
                               ),
-                              child: Text(_isLogin ? 'Login' : 'Signup'),
+                              child: Text(_isLogin ? 'Iniciar sesión' : 'Registrarse'),
                             ),
                             TextButton(
                               onPressed: () {
@@ -226,7 +226,7 @@ class _AuthScreenState extends ConsumerState<AuthScreen> {
                                 });
                               },
                               child: Text(
-                                _isLogin ? 'Create an account' : 'I already have an account',
+                                _isLogin ? 'Crear una cuenta' : 'Ya tengo una cuenta',
                               ),
                             ),
                           ],

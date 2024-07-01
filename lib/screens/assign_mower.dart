@@ -75,7 +75,7 @@ class _AssignMowerScreenState extends ConsumerState<AssignMowerScreen> {
     List<Employee> employees = ref.read(employeesProvider);
     return Scaffold(
       appBar: AppBar(
-        title: const Text('Assign the mower'),
+        title: const Text('Asignar el robot'),
       ),
       body: Padding(
         padding: const EdgeInsets.all(16),
@@ -90,8 +90,8 @@ class _AssignMowerScreenState extends ConsumerState<AssignMowerScreen> {
                 itemAsString: (client) => client.name,
                 dropdownDecoratorProps: DropDownDecoratorProps(
                   dropdownSearchDecoration: const InputDecoration(
-                    labelText: "Client",
-                    hintText: "Select a client",
+                    labelText: "Cliente",
+                    hintText: "Selecciona un cliente",
                   ),
                   baseStyle: Theme.of(context).textTheme.bodyLarge!.copyWith(
                         color: Theme.of(context).colorScheme.onBackground,
@@ -105,7 +105,7 @@ class _AssignMowerScreenState extends ConsumerState<AssignMowerScreen> {
                           color: Theme.of(context).colorScheme.onBackground,
                         ),
                     decoration: InputDecoration(
-                      hintText: 'Search here...',
+                      hintText: 'Busca aqui...',
                       hintStyle: Theme.of(context).textTheme.bodyLarge!.copyWith(
                             color: Theme.of(context).colorScheme.onBackground,
                           ),
@@ -114,7 +114,7 @@ class _AssignMowerScreenState extends ConsumerState<AssignMowerScreen> {
                 ),
                 validator: (client) {
                   if (client == null) {
-                    return 'Please select a client';
+                    return 'Selecciona un cliente';
                   }
                   return null;
                 },
@@ -131,8 +131,8 @@ class _AssignMowerScreenState extends ConsumerState<AssignMowerScreen> {
                 itemAsString: (employee) => '${employee.name} ${employee.surname1} ${employee.surname2}',
                 dropdownDecoratorProps: DropDownDecoratorProps(
                   dropdownSearchDecoration: const InputDecoration(
-                    labelText: "Employee",
-                    hintText: "Select an employee",
+                    labelText: "Empleado",
+                    hintText: "Selecciona un empleado",
                   ),
                   baseStyle: Theme.of(context).textTheme.bodyLarge!.copyWith(
                         color: Theme.of(context).colorScheme.onBackground,
@@ -146,7 +146,7 @@ class _AssignMowerScreenState extends ConsumerState<AssignMowerScreen> {
                           color: Theme.of(context).colorScheme.onBackground,
                         ),
                     decoration: InputDecoration(
-                      hintText: 'Search here...',
+                      hintText: 'Busca aqui...',
                       hintStyle: Theme.of(context).textTheme.bodyLarge!.copyWith(
                             color: Theme.of(context).colorScheme.onBackground,
                           ),
@@ -155,7 +155,7 @@ class _AssignMowerScreenState extends ConsumerState<AssignMowerScreen> {
                 ),
                 validator: (employee) {
                   if (employee == null) {
-                    return 'Please select an employee';
+                    return 'Selecciona un empleado';
                   }
                   return null;
                 },
@@ -174,7 +174,7 @@ class _AssignMowerScreenState extends ConsumerState<AssignMowerScreen> {
                         width: 16,
                         child: CircularProgressIndicator(),
                       )
-                    : const Text('Assign Mower'),
+                    : const Text('Asignar robot'),
               ),
             ],
           ),

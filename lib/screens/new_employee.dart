@@ -71,7 +71,7 @@ class _NewEmployeeState extends ConsumerState<NewEmployee> {
 
     AlertDialog alert = AlertDialog(
       title: Text(
-        'Save these credentials!',
+        'Guarda estas credenciales!',
         style: Theme.of(context).textTheme.titleMedium!.copyWith(
               color: Theme.of(context).colorScheme.primary,
               fontSize: 18,
@@ -82,13 +82,13 @@ class _NewEmployeeState extends ConsumerState<NewEmployee> {
         mainAxisSize: MainAxisSize.min,
         children: [
           Text(
-            'Username: ${employee.username}',
+            'Usuario: ${employee.username}',
             style: Theme.of(context).textTheme.bodyMedium!.copyWith(
                   color: Theme.of(context).colorScheme.onBackground,
                 ),
           ),
           Text(
-            'Password: ${employee.password}',
+            'Contraseña: ${employee.password}',
             style: Theme.of(context).textTheme.bodyMedium!.copyWith(
                   color: Theme.of(context).colorScheme.onBackground,
                 ),
@@ -109,7 +109,7 @@ class _NewEmployeeState extends ConsumerState<NewEmployee> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text('Add a new employee'),
+        title: const Text('Crear un nuevo empleado'),
       ),
       body: Padding(
         padding: const EdgeInsets.all(16),
@@ -121,14 +121,14 @@ class _NewEmployeeState extends ConsumerState<NewEmployee> {
                 style: Theme.of(context).textTheme.bodyMedium!.copyWith(
                       color: Theme.of(context).colorScheme.onBackground,
                     ),
-                decoration: const InputDecoration(labelText: 'Name'),
+                decoration: const InputDecoration(labelText: 'Nombre'),
                 textInputAction: TextInputAction.next,
                 validator: (value) {
                   if (value == null || value.trim().isEmpty) {
-                    return 'Please enter a name';
+                    return 'Introduzca un nombre válido';
                   }
                   if (value.trim().length < 3 || value.trim().length > 50) {
-                    return 'Name must be between 3 and 50 characters long';
+                    return 'El nombre tiene que tener entre 3 y 50 caracteres';
                   }
                   return null;
                 },
@@ -140,14 +140,14 @@ class _NewEmployeeState extends ConsumerState<NewEmployee> {
                 style: Theme.of(context).textTheme.bodyMedium!.copyWith(
                       color: Theme.of(context).colorScheme.onBackground,
                     ),
-                decoration: const InputDecoration(labelText: 'Surname 1'),
+                decoration: const InputDecoration(labelText: 'Primer apellido'),
                 textInputAction: TextInputAction.next,
                 validator: (value) {
                   if (value == null || value.trim().isEmpty) {
-                    return 'Please enter an surname';
+                    return 'Introduzca un apellido válido';
                   }
                   if (value.trim().length < 3 || value.trim().length > 50) {
-                    return 'Surname must be between 3 and 50 characters long';
+                    return 'El apellido tiene que tener entre 3 y 50 caraceters';
                   }
 
                   return null;
@@ -160,14 +160,14 @@ class _NewEmployeeState extends ConsumerState<NewEmployee> {
                 style: Theme.of(context).textTheme.bodyMedium!.copyWith(
                       color: Theme.of(context).colorScheme.onBackground,
                     ),
-                decoration: const InputDecoration(labelText: 'Surname 2'),
+                decoration: const InputDecoration(labelText: 'Segundo apellido (opcional)'),
                 textInputAction: TextInputAction.next,
                 validator: (value) {
                   if (value == null || value.trim().isEmpty) {
                     return null;
                   }
                   if (value.trim().length < 3 || value.trim().length > 50) {
-                    return 'Surname must be between 3 and 50 characters long';
+                    return 'El apellido tiene que tener entre 3 y 50 caracteres';
                   }
 
                   return null;
@@ -187,7 +187,7 @@ class _NewEmployeeState extends ConsumerState<NewEmployee> {
                         width: 16,
                         child: CircularProgressIndicator(),
                       )
-                    : const Text('Add Employee'),
+                    : const Text('Añadir empleado'),
               ),
             ],
           ),

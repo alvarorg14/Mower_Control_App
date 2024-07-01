@@ -65,7 +65,7 @@ class _NewClientState extends ConsumerState<NewClient> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text('Add a new client'),
+        title: const Text('Crea un nuevo cliente'),
       ),
       body: Padding(
         padding: const EdgeInsets.all(16),
@@ -77,14 +77,14 @@ class _NewClientState extends ConsumerState<NewClient> {
                 style: Theme.of(context).textTheme.bodyMedium!.copyWith(
                       color: Theme.of(context).colorScheme.onBackground,
                     ),
-                decoration: const InputDecoration(labelText: 'Name'),
+                decoration: const InputDecoration(labelText: 'Nombre'),
                 textInputAction: TextInputAction.next,
                 validator: (value) {
                   if (value == null || value.trim().isEmpty) {
-                    return 'Please enter a name';
+                    return 'Introduzca un nombre válido';
                   }
                   if (value.trim().length < 4 || value.trim().length > 40) {
-                    return 'Name must be between 4 and 40 characters long';
+                    return 'El nombre tiene que tener entre 4 y 40 caracteres';
                   }
                   return null;
                 },
@@ -96,14 +96,14 @@ class _NewClientState extends ConsumerState<NewClient> {
                 style: Theme.of(context).textTheme.bodyMedium!.copyWith(
                       color: Theme.of(context).colorScheme.onBackground,
                     ),
-                decoration: const InputDecoration(labelText: 'Address'),
+                decoration: const InputDecoration(labelText: 'Dirección'),
                 textInputAction: TextInputAction.next,
                 validator: (value) {
                   if (value == null || value.trim().isEmpty) {
-                    return 'Please enter an address';
+                    return 'Introduzca una dirección válida';
                   }
                   if (value.trim().length < 10 || value.trim().length > 100) {
-                    return 'Address must be between 10 and 100 characters long';
+                    return 'La dirección tiene que tener entre 10 y 100 caracteres';
                   }
 
                   return null;
@@ -116,18 +116,18 @@ class _NewClientState extends ConsumerState<NewClient> {
                 style: Theme.of(context).textTheme.bodyMedium!.copyWith(
                       color: Theme.of(context).colorScheme.onBackground,
                     ),
-                decoration: const InputDecoration(labelText: 'Phone Number'),
+                decoration: const InputDecoration(labelText: 'Telefono / Movil'),
                 textInputAction: TextInputAction.done,
                 keyboardType: TextInputType.number,
                 validator: (value) {
                   if (value!.isEmpty) {
-                    return 'Please enter a number';
+                    return 'Introduzca un numero válido';
                   }
                   if (int.tryParse(value) == null) {
-                    return 'Please enter a valid number';
+                    return 'Introduzca un numero válido';
                   }
                   if (int.parse(value) <= 0) {
-                    return 'Please enter a number greater than zero';
+                    return 'Introduzca un número válido';
                   }
                   return null;
                 },
@@ -146,7 +146,7 @@ class _NewClientState extends ConsumerState<NewClient> {
                         width: 16,
                         child: CircularProgressIndicator(),
                       )
-                    : const Text('Add Client'),
+                    : const Text('Añadir cliente'),
               ),
             ],
           ),

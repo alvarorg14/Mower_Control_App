@@ -15,7 +15,7 @@ class MowerDetailsScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text("Información detallada"),
+        title: const Text("Información"),
       ),
       body: SingleChildScrollView(
         child: Column(

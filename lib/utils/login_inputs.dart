@@ -7,7 +7,7 @@ class LoginInputs {
     return [
       TextFormField(
         decoration: const InputDecoration(
-          labelText: 'Username',
+          labelText: 'Usuario',
         ),
         style: TextStyle(
           color: Theme.of(context).colorScheme.onBackground,
@@ -16,7 +16,7 @@ class LoginInputs {
         textCapitalization: TextCapitalization.none,
         validator: (value) {
           if (value == null || value.trim().isEmpty) {
-            return 'Please enter a valid username';
+            return 'Introduzca un usuario válido';
           }
           return null;
         },
@@ -26,7 +26,7 @@ class LoginInputs {
       ),
       TextFormField(
         decoration: const InputDecoration(
-          labelText: 'Password',
+          labelText: 'Contraseña',
         ),
         style: TextStyle(
           color: Theme.of(context).colorScheme.onBackground,
@@ -34,7 +34,7 @@ class LoginInputs {
         obscureText: true,
         validator: (value) {
           if (value == null || value.trim().isEmpty) {
-            return 'Please enter a valid password';
+            return 'Introduzca una contraseña válida';
           }
           return null;
         },

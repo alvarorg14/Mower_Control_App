@@ -28,14 +28,14 @@ class ClientCard extends ConsumerWidget {
       context: context,
       builder: (ctx) => AlertDialog(
         title: Text(
-          'Are you sure?',
+          '¿Estas seguro?',
           style: themeData.textTheme.titleLarge!.copyWith(
             color: themeData.colorScheme.primary,
           ),
           textAlign: TextAlign.center,
         ),
         content: Text(
-          mowers.isNotEmpty ? 'This client has mowers assigned to it!' : 'This client has no mowers assigned to it.',
+          mowers.isNotEmpty ? 'Este cliente tiene robots asignados!' : 'Este cliente no tiene robots asignados',
           style: themeData.textTheme.bodyMedium!.copyWith(
             color: themeData.colorScheme.onBackground,
           ),
@@ -52,7 +52,7 @@ class ClientCard extends ConsumerWidget {
             onPressed: () {
               Navigator.of(ctx).pop(true);
             },
-            child: const Text('Yes'),
+            child: const Text('Si'),
           ),
         ],
       ),
@@ -85,7 +85,7 @@ class ClientCard extends ConsumerWidget {
           children: [
             const Icon(Icons.delete, color: Colors.white),
             Text(
-              'Delete',
+              'Borrar',
               style: Theme.of(context).textTheme.bodyMedium!.copyWith(
                     color: Colors.white,
                   ),

@@ -61,7 +61,7 @@ class _TabsScreenState extends ConsumerState<TabsScreen> {
     bool isAdmin = role == 'admin';
 
     Widget activePage = const MowersScreen();
-    var activePageTitle = 'Mowers';
+    var activePageTitle = 'Robots';
     List<Widget> activeActions = [
       IconButton(
         onPressed: updateRobots,
@@ -72,7 +72,7 @@ class _TabsScreenState extends ConsumerState<TabsScreen> {
 
     List<Map<String, dynamic>> pages = [
       {
-        'title': 'Mowers',
+        'title': 'Robots',
         'icon': Icons.home,
         'page': const MowersScreen(),
         'actions': [
@@ -84,7 +84,7 @@ class _TabsScreenState extends ConsumerState<TabsScreen> {
         ],
       },
       {
-        'title': 'Clients',
+        'title': 'Clientes',
         'icon': Icons.person,
         'page': const ClientsScreen(),
         'actions': [
@@ -95,7 +95,7 @@ class _TabsScreenState extends ConsumerState<TabsScreen> {
         ],
       },
       {
-        'title': 'Employees',
+        'title': 'Empleados',
         'icon': Icons.engineering,
         'page': const EmployeesScreen(),
         'actions': [
@@ -106,7 +106,7 @@ class _TabsScreenState extends ConsumerState<TabsScreen> {
         ],
       },
       {
-        'title': 'Incidences',
+        'title': 'Incidencias',
         'icon': Icons.warning_rounded,
         'page': const IncidencesScreen(),
         'actions': [
@@ -117,7 +117,7 @@ class _TabsScreenState extends ConsumerState<TabsScreen> {
         ],
       },
       {
-        'title': 'Profile',
+        'title': 'Perfil',
         'icon': Icons.settings,
         'page': const ProfileScreen(),
         'actions': [],
@@ -125,7 +125,7 @@ class _TabsScreenState extends ConsumerState<TabsScreen> {
     ];
 
     if (!isAdmin) {
-      pages.removeWhere((page) => page['title'] == 'Clients' || page['title'] == 'Employees');
+      pages.removeWhere((page) => page['title'] == 'Clientes' || page['title'] == 'Empleados');
     }
 
     if (_selectedPageIndex >= pages.length) {

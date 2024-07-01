@@ -33,7 +33,7 @@ void main() {
     );
 
     expect(find.text('Test Mower'), findsOneWidget);
-    expect(find.text('Model: 430X'), findsOneWidget);
-    expect(find.text('Serial number: 67890'), findsOneWidget);
+    expect(find.text('Modelo: 430X'), findsOneWidget);
+    expect(find.text('Número de serie: 67890'), findsOneWidget);
   });
 }

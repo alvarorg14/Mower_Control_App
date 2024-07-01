@@ -33,7 +33,7 @@ class UnassignedMowerCard extends StatelessWidget {
                   height: 8,
                 ),
                 Text(
-                  'Model: ${mower.model.name}',
+                  'Modelo: ${mower.model.name}',
                   style: Theme.of(context).textTheme.bodyMedium!.copyWith(
                         color: Theme.of(context).colorScheme.onBackground,
                       ),
@@ -42,7 +42,7 @@ class UnassignedMowerCard extends StatelessWidget {
                   height: 8,
                 ),
                 Text(
-                  'Serial number: ${mower.serialNumber}',
+                  'Número de serie: ${mower.serialNumber}',
                   style: Theme.of(context).textTheme.bodyMedium!.copyWith(
                         color: Theme.of(context).colorScheme.onBackground,
                       ),

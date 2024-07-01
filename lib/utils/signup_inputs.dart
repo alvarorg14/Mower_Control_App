@@ -16,7 +16,7 @@ class SignupInputs {
     return [
       TextFormField(
         decoration: const InputDecoration(
-          labelText: 'Company Name',
+          labelText: 'Nombre de la empresa',
         ),
         style: TextStyle(
           color: Theme.of(context).colorScheme.onBackground,
@@ -25,10 +25,10 @@ class SignupInputs {
         textCapitalization: TextCapitalization.none,
         validator: (value) {
           if (value == null || value.trim().isEmpty) {
-            return 'Please enter a valid company name';
+            return 'Introduzca un nombre válido';
           }
           if (value.trim().length < 3 || value.trim().length > 50) {
-            return 'Company name must be between 3 and 50 characters long';
+            return 'El nombre tiene que tener entre 3 y 50 caracteres';
           }
           return null;
         },
@@ -38,7 +38,7 @@ class SignupInputs {
       ),
       TextFormField(
         decoration: const InputDecoration(
-          labelText: 'Company CIF',
+          labelText: 'CIF',
         ),
         style: TextStyle(
           color: Theme.of(context).colorScheme.onBackground,
@@ -47,10 +47,10 @@ class SignupInputs {
         textCapitalization: TextCapitalization.none,
         validator: (value) {
           if (value == null || value.trim().isEmpty) {
-            return 'Please enter a valid CIF';
+            return 'Introduzca un CIF válido';
           }
           if (value.trim().length != 9) {
-            return 'CIF must be 9 characters long';
+            return 'CIF tiene que tener 9 caracteres';
           }
           return null;
         },
@@ -60,7 +60,7 @@ class SignupInputs {
       ),
       TextFormField(
         decoration: const InputDecoration(
-          labelText: 'Name',
+          labelText: 'Nombre',
         ),
         style: TextStyle(
           color: Theme.of(context).colorScheme.onBackground,
@@ -69,10 +69,10 @@ class SignupInputs {
         textCapitalization: TextCapitalization.none,
         validator: (value) {
           if (value == null || value.trim().isEmpty) {
-            return 'Please enter a valid name';
+            return 'Introduzca un nombre válido';
           }
           if (value.trim().length < 3 || value.trim().length > 50) {
-            return 'Name must be between 3 and 50 characters long';
+            return 'El nombre tiene que tener entre 3 y 50 caracteres';
           }
           return null;
         },
@@ -82,7 +82,7 @@ class SignupInputs {
       ),
       TextFormField(
         decoration: const InputDecoration(
-          labelText: 'Surname 1',
+          labelText: 'Primer apellido',
         ),
         style: TextStyle(
           color: Theme.of(context).colorScheme.onBackground,
@@ -91,10 +91,10 @@ class SignupInputs {
         textCapitalization: TextCapitalization.none,
         validator: (value) {
           if (value == null || value.trim().isEmpty) {
-            return 'Please enter a valid surname';
+            return 'Introduzca un appellido válido';
           }
           if (value.trim().length < 3 || value.trim().length > 50) {
-            return 'Surname must be between 3 and 50 characters long';
+            return 'El apellido tiene que tener entre 3 y 50 caracteres';
           }
           return null;
         },
@@ -104,7 +104,7 @@ class SignupInputs {
       ),
       TextFormField(
         decoration: const InputDecoration(
-          labelText: 'Surname 2 (optional)',
+          labelText: 'Segundo apellido (opcional)',
         ),
         style: TextStyle(
           color: Theme.of(context).colorScheme.onBackground,
@@ -113,7 +113,7 @@ class SignupInputs {
         textCapitalization: TextCapitalization.none,
         validator: (value) {
           if (value != null && (value.trim().length < 3 || value.trim().length > 50)) {
-            return 'Surname must be between 3 and 50 characters long';
+            return 'El apellido tiene que tener entre 3 y 50 caracters';
           }
           return null;
         },
@@ -123,7 +123,7 @@ class SignupInputs {
       ),
       TextFormField(
         decoration: const InputDecoration(
-          labelText: 'Username',
+          labelText: 'Usuario',
         ),
         style: TextStyle(
           color: Theme.of(context).colorScheme.onBackground,
@@ -132,10 +132,10 @@ class SignupInputs {
         textCapitalization: TextCapitalization.none,
         validator: (value) {
           if (value == null || value.trim().isEmpty) {
-            return 'Please enter a valid username';
+            return 'Introduzca un usuario válido';
           }
           if (value.trim().length < 3 || value.trim().length > 20) {
-            return 'Username must be between 3 and 20 characters long';
+            return 'El usuario tiene que tener entre 3 y 20 caracteres';
           }
           return null;
         },
@@ -145,7 +145,7 @@ class SignupInputs {
       ),
       TextFormField(
         decoration: const InputDecoration(
-          labelText: 'Password',
+          labelText: 'Contraseña',
         ),
         style: TextStyle(
           color: Theme.of(context).colorScheme.onBackground,
@@ -153,10 +153,10 @@ class SignupInputs {
         obscureText: true,
         validator: (value) {
           if (value == null || value.trim().isEmpty) {
-            return 'Please enter a valid password';
+            return 'Introduzca una contraseña válida';
           }
           if (value.trim().length < 8 || value.trim().length > 20) {
-            return 'Password must be between 8 and 20 characters long';
+            return 'La contraseña tiene que tener entre 8 y 20 caracteres';
           }
           return null;
         },

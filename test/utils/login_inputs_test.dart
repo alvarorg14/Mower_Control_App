@@ -29,15 +29,15 @@ void main() {
 
       expect(find.byType(TextFormField), findsNWidgets(2));
 
-      final usernameFieldFinder = find.widgetWithText(TextFormField, 'Username');
+      final usernameFieldFinder = find.widgetWithText(TextFormField, 'Usuario');
       final usernameField = tester.widget<TextFormField>(usernameFieldFinder);
-      expect(usernameField.validator!(''), 'Please enter a valid username');
+      expect(usernameField.validator!(''), 'Introduzca un usuario válido');
       expect(usernameField.validator!('testUser'), null);
 
-      final passwordFieldFinder = find.widgetWithText(TextFormField, 'Password');
+      final passwordFieldFinder = find.widgetWithText(TextFormField, 'Contraseña');
       expect(passwordFieldFinder, findsOneWidget);
       final passwordField = tester.widget<TextFormField>(passwordFieldFinder);
-      expect(passwordField.validator!(''), 'Please enter a valid password');
+      expect(passwordField.validator!(''), 'Introduzca una contraseña válida');
       expect(passwordField.validator!('testPass'), null);
 
       await tester.enterText(usernameFieldFinder, 'testUser');

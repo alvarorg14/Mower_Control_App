@@ -36,7 +36,7 @@ class IncidenceCard extends ConsumerWidget {
           children: [
             const Icon(Icons.done, color: Colors.white),
             Text(
-              'Done',
+              'Leída',
               style: Theme.of(context).textTheme.bodyMedium!.copyWith(
                     color: Colors.white,
                   ),

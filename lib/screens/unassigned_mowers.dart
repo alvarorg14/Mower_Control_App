@@ -27,7 +27,7 @@ class _UnassginedMowersScreenState extends ConsumerState<UnassignedMowersScreen>
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text('Unassigned Mowers'),
+        title: const Text('Robots sin asignar'),
       ),
       body: FutureBuilder(
         future: _futureMowers,
@@ -37,11 +37,11 @@ class _UnassginedMowersScreenState extends ConsumerState<UnassignedMowersScreen>
           }
 
           if (snapshot.hasError) {
-            return const Center(child: Text('Something went wrong!'));
+            return const Center(child: Text('Algo ha ido mal!'));
           }
 
           if (!snapshot.hasData || snapshot.data!.isEmpty) {
-            return const Center(child: Text('No unassgined mowers found!'));
+            return const Center(child: Text('No existen robots sin asignar!'));
           }
 
           return ListView.builder(

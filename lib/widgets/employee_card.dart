@@ -28,16 +28,14 @@ class EmployeeCard extends ConsumerWidget {
       context: context,
       builder: (ctx) => AlertDialog(
         title: Text(
-          'Are you sure?',
+          '¿Estás seguro?',
           style: themeData.textTheme.titleLarge!.copyWith(
             color: themeData.colorScheme.primary,
           ),
           textAlign: TextAlign.center,
         ),
         content: Text(
-          mowers.isNotEmpty
-              ? 'This employee has mowers assigned to it!'
-              : 'This employee has no mowers assigned to it.',
+          mowers.isNotEmpty ? 'Este empleado tiene robots asignados!' : 'Este empleado no tiene robots asignados',
           style: themeData.textTheme.bodyMedium!.copyWith(
             color: themeData.colorScheme.onBackground,
           ),
@@ -54,7 +52,7 @@ class EmployeeCard extends ConsumerWidget {
             onPressed: () {
               Navigator.of(ctx).pop(true);
             },
-            child: const Text('Yes'),
+            child: const Text('Si'),
           ),
         ],
       ),
@@ -87,7 +85,7 @@ class EmployeeCard extends ConsumerWidget {
           children: [
             const Icon(Icons.delete, color: Colors.white),
             Text(
-              'Delete',
+              'Borrar',
               style: Theme.of(context).textTheme.bodyMedium!.copyWith(
                     color: Colors.white,
                   ),

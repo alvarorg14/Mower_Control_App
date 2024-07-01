@@ -29,9 +29,9 @@ class _IncidencesScreenState extends ConsumerState<IncidencesScreen> {
   void showSnackBar(BuildContext context, Incidence incidence) {
     ScaffoldMessenger.of(context).showSnackBar(
       SnackBar(
-        content: const Text("Incidence Readed"),
+        content: const Text("Incidencia leída"),
         action: SnackBarAction(
-          label: "UNDO",
+          label: "DESHACER",
           onPressed: () {
             ref.read(incidencesProvider.notifier).undoRemove();
             incidencesApi.updateIncidenceReadedStatus(ref.read(authProvider), incidence);

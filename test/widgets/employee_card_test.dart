@@ -78,7 +78,7 @@ void main() {
 
     await tester.drag(find.byType(EmployeeCard), const Offset(-500, 0));
     await tester.pumpAndSettle();
-    expect(find.text('Are you sure?'), findsOneWidget);
-    expect(find.text('This employee has mowers assigned to it!'), findsOneWidget);
+    expect(find.text('¿Estás seguro?'), findsOneWidget);
+    expect(find.text('Este empleado tiene robots asignados!'), findsOneWidget);
   });
 }

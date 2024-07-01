@@ -50,7 +50,7 @@ class _MowersScreenState extends ConsumerState<MowersScreen> {
               });
             },
             decoration: InputDecoration(
-              labelText: 'Search',
+              labelText: 'Buscar',
               suffixIcon: const Icon(Icons.search),
               border: OutlineInputBorder(
                 borderRadius: BorderRadius.circular(10.0),
