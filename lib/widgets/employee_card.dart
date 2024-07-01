@@ -6,13 +6,17 @@ import 'package:mower_control_app/models/employee.dart';
 import 'package:mower_control_app/models/mower.dart';
 import 'package:mower_control_app/providers/auth_provider.dart';
 
-const mowersApi = MowersApi();
-const employeesApi = EmployeesApi();
-
 class EmployeeCard extends ConsumerWidget {
-  const EmployeeCard({super.key, required this.employee});
+  const EmployeeCard({
+    super.key,
+    required this.employee,
+    this.mowersApi = const MowersApi(),
+    this.employeesApi = const EmployeesApi(),
+  });
 
   final Employee employee;
+  final MowersApi mowersApi;
+  final EmployeesApi employeesApi;
 
   Future<bool> _showConfirmationDialog(BuildContext context, WidgetRef ref) async {
     final themeData = Theme.of(context);

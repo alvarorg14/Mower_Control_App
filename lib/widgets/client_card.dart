@@ -6,13 +6,17 @@ import 'package:mower_control_app/models/client.dart';
 import 'package:mower_control_app/models/mower.dart';
 import 'package:mower_control_app/providers/auth_provider.dart';
 
-const mowersApi = MowersApi();
-const clientsApi = ClientsApi();
-
 class ClientCard extends ConsumerWidget {
-  const ClientCard({super.key, required this.client});
+  const ClientCard({
+    super.key,
+    required this.client,
+    this.mowersApi = const MowersApi(),
+    this.clientsApi = const ClientsApi(),
+  });
 
   final Client client;
+  final MowersApi mowersApi;
+  final ClientsApi clientsApi;
 
   Future<bool> _showConfirmationDialog(BuildContext context, WidgetRef ref) async {
     final themeData = Theme.of(context);
